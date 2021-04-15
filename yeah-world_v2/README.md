@@ -8,6 +8,11 @@ This is the example code used in Arm's [Raspberry Pi gesture recognition walkthr
 *Note: These example scripts are designed to be easy to read and follow, not to demonstrate state-of-the-art or best practice.*
 
 ## Dependencies
+Make sure you do the following in a virtual enviroment:
+    $ python3 -m venv --system-site-packages ./venv
+    $ source ./venv/bin/activate
+    (venv) $ pip install --upgrade pip
+    (venv) $ pip list  # show packages installed within the virtual environment
 
 From a base Raspian install you will need to add TensorFlow:
 
@@ -18,9 +23,18 @@ From a base Raspian install you will need to add TensorFlow:
     sudo pip3 install https://storage.googleapis.com/tensorflow/raspberrypi/tensorflow-1.14.0-cp34-none-linux_armv6l.whl
     
     # Pi 3 (Raspbian 9) or Pi 4 Model B(Raspbian 10)
-    sudo pip3 install --upgrade tensorflow
+    # you may try 
+    (venv) $ pip --upgrade tensorflow
+    # if there is error, try the following:
+    (venv) $ wget https://github.com/lhelontra/tensorflow-on-arm/releases/download/v2.0.0/tensorflow-2.0.0-cp37-none-linux_armv7l.whl
+    (venv) $ pip install tensorflow-2.0.0-cp37-none-linux_armv7l.whl
+
     # On a low memory Pi, you will probably get a "Memory Error" error message during installation. Instead, please use the command below.
     sudo pip3 install --no-cache-dir tensorflow
+
+    # codes have been migrated to tensorflow 2.0 in /yeah-world_v2
+    # required packages are stored in /yeah-world_v2/requirement.txt
+
     
 ## Example
 
