@@ -31,6 +31,7 @@ class Camera:
         self.camera = PiCamera()
         self.camera.resolution = (128, 128)
         self.camera.framerate = 30
+        self.camera.rotation = 270
         self.capture = PiRGBArray(self.camera, size=self.camera.resolution)
         self.stream = self.camera.capture_continuous(self.capture,
                                                      format='rgb',
@@ -58,5 +59,5 @@ class Camera:
             awb_b = max(0., uniform(-.5, .5) + self.base_awb[1])
             self.camera.awb_gains = (awb_r, awb_b)
 
-        frame = self.stream.next().array
+        frame = next(self.stream).array
         return frame
